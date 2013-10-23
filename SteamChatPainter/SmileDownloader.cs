@@ -23,7 +23,7 @@ namespace SteamChatPainter
 
         public static bool GetSmileStream(String smileUrl, out Stream smileStream)
         {
-            HttpWebRequest request = WebRequest.CreateHttp(smileUrl);
+            HttpWebRequest request = (HttpWebRequest) WebRequest.Create(smileUrl);
             HttpWebResponse response;
 
             try
@@ -83,7 +83,7 @@ namespace SteamChatPainter
                 }
                 else
                 {
-                    MessageBox.Show("Could not download the smile!");
+                    MessageBox.Show("Could not download the :{0}: smile!", smileName);
                 }
             }
 

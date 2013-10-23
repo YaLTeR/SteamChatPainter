@@ -41,11 +41,33 @@ namespace SteamChatPainter
         private void tbWidth_TextChanged(object sender, EventArgs e)
         {
             this.mainGrid.SetWidth(this.tbWidth.Text);
+
+            int currentSize = this.mainGrid.GetSteamChatTextSize();
+            lbCurrentSize.Text = String.Format("Chars: {0} / 2048", currentSize);
+            if (currentSize > 2048)
+            {
+                lbCurrentSize.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbCurrentSize.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
+            }
         }
 
         private void tbHeight_TextChanged(object sender, EventArgs e)
         {
             this.mainGrid.SetHeight(this.tbHeight.Text);
+
+            int currentSize = this.mainGrid.GetSteamChatTextSize();
+            lbCurrentSize.Text = String.Format("Chars: {0} / 2048", currentSize);
+            if (currentSize > 2048)
+            {
+                lbCurrentSize.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbCurrentSize.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
+            }
         }
 
         private void cbDrawGrid_CheckedChanged(object sender, EventArgs e)
@@ -63,6 +85,17 @@ namespace SteamChatPainter
         private void mainGrid_Resize(object sender, EventArgs e)
         {
             lbSize.Text = this.mainGrid.GetSizeString();
+
+            int currentSize = this.mainGrid.GetSteamChatTextSize();
+            lbCurrentSize.Text = String.Format("Chars: {0} / 2048", currentSize);
+            if (currentSize > 2048)
+            {
+                lbCurrentSize.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbCurrentSize.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
+            }
         }
 
         private void smileSelectorGrid_Load(object sender, EventArgs e)
@@ -104,9 +137,7 @@ namespace SteamChatPainter
             IsMouseDown[Convert.ToInt32(e.Button == MouseButtons.Right)] = false;
 
             int currentSize = this.mainGrid.GetSteamChatTextSize();
-
             lbCurrentSize.Text = String.Format("Chars: {0} / 2048", currentSize);
-
             if (currentSize > 2048)
             {
                 lbCurrentSize.ForeColor = Color.Red;
@@ -119,7 +150,7 @@ namespace SteamChatPainter
 
         private void mainGrid_MouseMove(object sender, MouseEventArgs e)
         {
-            if (IsMouseDown[0] && selectedSmile != -1)
+            if (IsMouseDown[0])
             {
                 this.mainGrid.SetCellSmile(e.X / 18, e.Y / 20, selectedSmile);
             }
@@ -138,6 +169,9 @@ namespace SteamChatPainter
         private void btnClearGrid_Click(object sender, EventArgs e)
         {
             this.mainGrid.ClearGrid();
+
+            this.lbCurrentSize.Text = "Chars: 2 / 2048";
+            this.lbCurrentSize.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
         }
 
         private void btnCopy_Click(object sender, EventArgs e)
@@ -153,6 +187,17 @@ namespace SteamChatPainter
         private void tbSeparator_TextChanged(object sender, EventArgs e)
         {
             this.mainGrid.SetSeparator(tbSeparator.Text);
+
+            int currentSize = this.mainGrid.GetSteamChatTextSize();
+            lbCurrentSize.Text = String.Format("Chars: {0} / 2048", currentSize);
+            if (currentSize > 2048)
+            {
+                lbCurrentSize.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbCurrentSize.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
