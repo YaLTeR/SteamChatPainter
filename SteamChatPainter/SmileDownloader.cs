@@ -83,7 +83,7 @@ namespace SteamChatPainter
                 }
                 else
                 {
-                    MessageBox.Show("Could not download the :{0}: smile!", smileName);
+                    MessageBox.Show(String.Format("Could not download the :{0}: smile!", smileName));
                 }
             }
 
